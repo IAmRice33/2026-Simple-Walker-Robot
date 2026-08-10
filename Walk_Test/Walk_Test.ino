@@ -69,7 +69,7 @@ void setup() {
 }
 
 void loop() {
-  walkForward();
+  turnRight();
 }
 
 void updateServo(int channel, int angle) {
@@ -80,7 +80,7 @@ void updateServo(int channel, int angle) {
 
 /* Centers
     LF: center+2
-    LM: center
+    LM: center+1
     LB: center-6
     RF: center+4
     RM: center+5
@@ -96,25 +96,25 @@ void walkForward() {
   updateServo(RB, center+4);
   delay(1000);
 
-  // Tripod A moves
+  // Left moves forward
   updateServo(LF, center-8);
   updateServo(LB, center-22);
 
   delay(1000);
 
-  // Return Tripod A
+  // Return Left
   updateServo(LF, center+2);
   updateServo(LB, center-6);
 
   delay(1000);
 
-  // Tripod B moves
+  // Right moves forward
   updateServo(RF, center+20);
   updateServo(RB, center+20);
 
   delay(1000);
 
-  // Return Tripod B
+  // Return Right
   updateServo(RF, center+4);
   updateServo(RB, center+4);
 
@@ -123,35 +123,102 @@ void walkForward() {
 
 void walkBackward() {
   updateServo(LF, center+2);
-  updateServo(LM, center-14);
+  updateServo(LM, center-12);
   updateServo(LB, center-6);
   updateServo(RF, center+4);
   updateServo(RM, center+20);
   updateServo(RB, center+4);
   delay(1000);
 
-  // Tripod A moves
+  // Left moves backward
   updateServo(LF, center + 12);
   updateServo(LB, center + 10);
 
   delay(1000);
 
-  // Return Tripod A
+  // Return Left
   updateServo(LF, center+2);
   updateServo(LB, center-6);
 
   delay(1000);
 
-  // Tripod B moves
+  // Right moves backward
   updateServo(RF, center - 10);
   updateServo(RB, center - movement);
 
   delay(1000);
 
-  // Return Tripod B
+  // Return Right
   updateServo(RF, center+4);
   updateServo(RB, center+4);
 
   delay(1000);
 }
 
+void turnLeft() {
+  updateServo(LF, center+2);
+  updateServo(LM, center-12);
+  updateServo(LB, center-6);
+  updateServo(RF, center+4);
+  updateServo(RM, center-10);
+  updateServo(RB, center+4);
+  delay(1000);
+
+  // Left moves backward
+  updateServo(LF, center + 12);
+  updateServo(LB, center + 10);
+
+  delay(1000);
+
+  // Return Left
+  updateServo(LF, center+2);
+  updateServo(LB, center-6);
+
+  delay(1000);
+
+  // Right moves forward
+  updateServo(RF, center+20);
+  updateServo(RB, center+20);
+
+  delay(1000);
+
+  // Return Right
+  updateServo(RF, center+4);
+  updateServo(RB, center+4);
+
+  delay(1000);
+}
+
+void turnRight() {
+  updateServo(LF, center+2);
+  updateServo(LM, center+14);
+  updateServo(LB, center-6);
+  updateServo(RF, center+4);
+  updateServo(RM, center+20);
+  updateServo(RB, center+4);
+  delay(1000);
+
+  // Left moves forward
+  updateServo(LF, center-8);
+  updateServo(LB, center-22);
+
+  delay(1000);
+
+  // Return Left
+  updateServo(LF, center+2);
+  updateServo(LB, center-6);
+
+  delay(1000);
+
+  // Right moves backward
+  updateServo(RF, center - 10);
+  updateServo(RB, center - movement);
+
+  delay(1000);
+
+  // Return Right
+  updateServo(RF, center+4);
+  updateServo(RB, center+4);
+
+  delay(1000);
+}
